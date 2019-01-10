@@ -14,9 +14,8 @@ public class fileLog {
 	  
 	  public fileLog(){}
 
-	public fileLog(long num, String name, String date) {
+	public fileLog(String name, String date) {
 		super();
-		this.num = num;
 		this.name = name;
 		this.date = date;
 	}

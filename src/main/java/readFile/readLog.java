@@ -44,20 +44,29 @@ public class readLog {
 			String s1=null;
 			String s2=null;
 			String s3=null;
+			String date;
 			char c;
 			 int x=0;
-			 ArrayList<Line> ErrorList=new ArrayList<Line>();
 			 Line line1=new Line();
+
+			 ArrayList<Line> ErrorList=new ArrayList<Line>();
 			 Map<String,Integer> errorMapCore=new HashMap<String,Integer>(); 
 			 Map<String,Integer> errorMapCustom=new HashMap<String,Integer>(); 
 
 			 
 			 try {
 				 do {
+
 					// logLine=readLine();
 					 String data=reader.readLine();
 					 if(data==null)
 						  break;
+					 int subSindex=data.indexOf("INFO");
+					 if(subSindex!=-1) {
+						 date=data.substring(subSindex+6,subSindex+21);
+						 line1.setDate(date);
+					 }
+					 
 					 int substringIndex1=data.indexOf("Caused");
 					 int substringIndex2=data.indexOf("by");
 					 

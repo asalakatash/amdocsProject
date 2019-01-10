@@ -8,6 +8,7 @@ public class Line {
 	private String errorCode = null;	
 	private String severity = null;	
 	private String solution = null;
+	private String date=null;
 	
 	
 	public Line() {
@@ -15,7 +16,7 @@ public class Line {
 	}
 
 
-	public Line(String appName, String appType, String errorCode, String severity, String solution) {
+	public Line(String appName, String appType, String errorCode, String severity, String solution,String date) {
 		super();
 	//	this.content = content;
 		this.appName = appName;
@@ -23,7 +24,18 @@ public class Line {
 		this.errorCode = errorCode;
 		this.severity = severity;
 		this.solution = solution;
+		this.date=date;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 
 	public String getAppName() {
 		return appName;

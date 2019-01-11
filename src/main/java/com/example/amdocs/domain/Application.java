@@ -1,9 +1,19 @@
 package com.example.amdocs.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.example.amdocs.domain.Deffects;
 
 
 enum TYPE 
@@ -18,9 +28,19 @@ public class Application {
 	private long id;
 	private String name;
 	private String type;
-	
+    private Set<Deffect_instance> deffectInstance;
+
+    
 	public Application() {
 		// TODO Auto-generated constructor stub
+	}
+	@OneToMany(mappedBy = "application")
+	public Set<Deffect_instance> getDeffectInstance() {
+		return deffectInstance;
+	}
+
+	public void setDeffectInstance(Set<Deffect_instance> deffectInstance) {
+		this.deffectInstance = deffectInstance;
 	}
 
 	public Application(String name, String type) {
@@ -52,7 +72,7 @@ public class Application {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	
 	
 }

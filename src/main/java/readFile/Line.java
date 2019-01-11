@@ -10,22 +10,7 @@ public class Line {
 	private String solution = null;
 	private String date=null;
 	
-	
-	public Line() {
-		super();	
-	}
 
-
-	public Line(String appName, String appType, String errorCode, String severity, String solution,String date) {
-		super();
-	//	this.content = content;
-		this.appName = appName;
-		this.appType = appType;
-		this.errorCode = errorCode;
-		this.severity = severity;
-		this.solution = solution;
-		this.date=date;
-	}
 
 	public String getDate() {
 		return date;

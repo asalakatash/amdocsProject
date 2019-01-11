@@ -1,9 +1,19 @@
 package com.example.amdocs.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.example.amdocs.domain.Application;
 
 
 enum Severity 
@@ -18,17 +28,30 @@ public class Deffects {
 	  @GeneratedValue(strategy=GenerationType.AUTO)
 	  private long id;
 	  private String errorCode;
-	  private Severity deffectSeverity;
-	  private long solId;
+	  private String deffectSeverity;
+	  private String solId;
+	  private Set<Deffect_instance> deffectInstance;
+
+	  
+	  @ManyToMany(mappedBy = "Deffects") 
+	  private Set<Application> applications;
 	  
 	  Deffects(){}
 
-	public Deffects(long id, String errorCode, Severity deffectSeverity, long solId) {
+	public Deffects(String errorCode, String deffectSeverity, String solId) {
 		super();
-		this.id = id;
 		this.errorCode = errorCode;
 		this.deffectSeverity = deffectSeverity;
 		this.solId = solId;
+	}
+
+	@OneToMany(mappedBy = "deffects")
+	public Set<Deffect_instance> getDeffectInstance() {
+		return deffectInstance;
+	}
+
+	public void setDeffectInstance(Set<Deffect_instance> deffectInstance) {
+		this.deffectInstance = deffectInstance;
 	}
 
 	public long getId() {
@@ -47,19 +70,19 @@ public class Deffects {
 		this.errorCode = errorCode;
 	}
 
-	public Severity getDeffectSeverity() {
+	public String getDeffectSeverity() {
 		return deffectSeverity;
 	}
 
-	public void setDeffectSeverity(Severity deffectSeverity) {
+	public void setDeffectSeverity(String deffectSeverity) {
 		this.deffectSeverity = deffectSeverity;
 	}
 
-	public long getSolId() {
+	public String getSolId() {
 		return solId;
 	}
 
-	public void setSolId(long solId) {
+	public void setSolId(String solId) {
 		this.solId = solId;
 	}
 	  

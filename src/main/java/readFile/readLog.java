@@ -45,7 +45,7 @@ public class readLog {
 			String s2=null;
 			String s3=null;
 			String date;
-			char c;
+			char c,c1;
 			 int x=0;
 			 Line line1=new Line();
 
@@ -115,13 +115,22 @@ public class readLog {
 						  
 						
 						 }
-						 
+						 c1=s2.charAt(5);
+						 if(c1>48 && c1<52) {
+                              line1.setSeverity("critical");					
+                              }
+						 else if(c1>51 && c1<55) {
+                             line1.setSeverity("error");					
+							 }
+						 else {
+                             line1.setSeverity("warning");					
+							 }
 						 ErrorList.add(line1);
 						 }
 					 
 				 }while(true);
 				 
-				 getSeverity(errorMapCore,errorMapCustom,line1);
+				// getSeverity(errorMapCore,errorMapCustom,line1);
 			 }
 			 catch(Exception e) {
 				 System.out.println(e +"encountered. Unable to process input file.");
